@@ -14,14 +14,16 @@
         <img id="groundTexture" src="public/images/road.jpg">
         <img id="skyTexture" src="public/images/sky1.jpg">
     </a-assets>
+
     <a-cylinder id="ground" src="#groundTexture" radius="60" height="0.1"></a-cylinder>
     <a-sky id="background" src="#skyTexture" theta-length="90" radius="60"></a-sky>
-    <!-- <a-light type="directional" color="#FFF" intensity="0.5" position="0 0 0"></a-light>-->
+    
     <a-light type="ambient" color="#FFF"></a-light>
     
-    <a-box position="0 2.084 0" color="#4CC3D9" material="color:#008006" geometry="height:1.35"></a-box>
-    <a-cylinder position="0 0.75 0" radius="0.5" height="1.5" color="#FFC65D" material="color:#875c0d" geometry="radius:0.14"></a-cylinder>
-
+    <a-entity><!--tree-->
+        <a-box position="0 2.084 0" color="#4CC3D9" material="color:#008006" geometry="height:1.35"></a-box>
+        <a-cylinder position="0 0.75 0" radius="0.5" height="1.5" color="#FFC65D" material="color:#875c0d" geometry="radius:0.14"></a-cylinder>
+    </a-entity>
 
 
 <a-entity id="cameraWrapper" position="0 0 0" rotation="0 90 0">
