@@ -79,13 +79,36 @@
     </a-entity>
 </a-entity>
 
+    <a-entity id="rightcirc" class="collidable" cursor-right position="0 10 -5" geometry="primitive:circle" rotation="45 0 90"></a-entity>
+    <a-entity id="leftcirc" class="collidable" cursor-left position="0 10 5" geometry="primitive:circle" rotation="45 90 0"></a-entity>
+    
+    <!-- <a-entity id="switcher" raycaster="objects: .collidable; showLine:true; near:12; far:13" position="10 4 0" near=12 far=13 daydream-controls="hand:right" gearvr-controls="hand:right" oculus-touch-controls="hand:right" vive-controls="hand:right" laser-controls="" rotation="0 90 0"></a-entity>-->
 
-<a-entity id="cameraWrapper" position="0 0 0" rotation="0 90 0">
-      <a-camera></a-camera>
-</a-entity>
+    <a-entity camera id="cameraWrapper" position="0 0 0" rotation="0 90 0">
+          <a-entity cursor="fuse: true; fuseTimeout: 100" position="0 0 -1" geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03" material="color: black; shader: flat">
+            </a-entity>
+    </a-entity>
 </a-scene>
+
 <script>
-document.querySelector("#cameraWrapper").setAttribute('position', {x:10, y: 4, z: 0});
+    document.querySelector("#cameraWrapper").setAttribute('position', {x: 10, y: 4, z: 0});
+
+    function getcircrot(rightcirc){
+        var rotation=document.getElementById('rightcirc').getAttribute("rotation");
+
+        var lol=rotation.split(" ");
+        var x=lol[0];
+        var y=lol[1];
+        var z=lol[2];
+        var len=Math.sqrt((x*x)+(y*y)+(z*z));
+
+        var alpha=Math.acos(rotation[0]/len)*57.29577951308;
+        var beta=Math.acos(rotation[1]/len)*57.29577951308;
+        var gamma=Math.acos(rotation[2]/len)*57.29577951308;
+        document.querySelector("#rightcirc").setAttribute('rotation', {x:alpha,y:beta,z:gamma});
+    };
+
+
 </script>
 
 
