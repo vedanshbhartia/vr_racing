@@ -3,14 +3,14 @@
     <head>
         <title>VR Racing</title>
         <script src="https://aframe.io/releases/0.6.1/aframe.min.js"></script>
-        <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v3.10.1/dist/aframe-extras.min.js"></script>
+        <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v3.10.1/dist/aframe-extras.min.js"></script>
     </head>
 
 <body>
 <a-scene>
     <a-assets>
-        <img id="groundTexture" src="road.jpg">
-        <img id="skyTexture" src="sky1.jpg">
+        <img id="groundTexture" src="public/images/road.jpg">
+        <img id="skyTexture" src="public/images/sky1.jpg">
     </a-assets>
     <a-cylinder id="ground" src="#groundTexture" radius="60" height="0.1"></a-cylinder>
     <a-sky id="background" src="#skyTexture" theta-length="90" radius="60"></a-sky>
