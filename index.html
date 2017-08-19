@@ -6,6 +6,7 @@
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g=" crossorigin="anonymous"></script>
         <script src="https://aframe.io/releases/0.6.1/aframe.min.js"></script>
         <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v3.10.1/dist/aframe-extras.min.js"></script>
+        <script src="https://unpkg.com/aframe-rain@%5E1.0.2/build/aframe-rain.min.js" data-component-description="A-Frame rain component" data-component-names="rain" data-component-url="https://npmjs.com/package/aframe-rain" data-package-name="aframe-rain"></script>
     </head>
 
 <body>
@@ -24,7 +25,8 @@
         <a-box position="0 2.084 0" color="#4CC3D9" material="color:#008006" geometry="height:1.35"></a-box>
         <a-cylinder position="0 0.75 0" radius="0.5" height="1.5" color="#FFC65D" material="color:#875c0d" geometry="radius:0.14"></a-cylinder>
     </a-entity>
-
+    
+    <a-entity rain="depthDensity:0.28;height:10;count:5000;color:#2da9fe;splash:false"></a-entity>
 
 <a-entity id="cameraWrapper" position="0 0 0" rotation="0 90 0">
       <a-camera></a-camera>
