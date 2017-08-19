@@ -6,6 +6,10 @@
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g=" crossorigin="anonymous"></script>
         <script src="https://aframe.io/releases/0.6.1/aframe.min.js"></script>
         <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v3.10.1/dist/aframe-extras.min.js"></script>
+        <!-- for tracking of car -->
+        <script src="https://rawgit.com/aframevr/aframe/master/dist/aframe-master.min.js"></script> 
+        <script src="https://rawgit.com/protyze/aframe-curve-component/master/dist/aframe-curve-component.min.js"></script> 
+        <script src="https://rawgit.com/protyze/aframe-alongpath-component/master/dist/aframe-alongpath-component.min.js"></script>
     </head>
 
 <body>
@@ -14,22 +18,49 @@
         <img id="groundTexture" src="public/images/road.jpg">
         <img id="skyTexture" src="public/images/sky1.jpg">
     </a-assets>
-    <a-cylinder id="ground" src="#groundTexture" radius="60" height="0.1"></a-cylinder>
-    <a-sky id="background" src="#skyTexture" theta-length="90" radius="60"></a-sky>
-    <!-- <a-light type="directional" color="#FFF" intensity="0.5" position="0 0 0"></a-light>-->
+     <a-cylinder id="ground" src="#groundTexture" radius="60" height="0.1"></a-cylinder> 
+     <a-sky id="background" src="#skyTexture" theta-length="90" radius="60"></a-sky> 
+     <a-light type="directional" color="#FFF" intensity="0.5" position="0 0 0"></a-light>
     <a-light type="ambient" color="#FFF"></a-light>
-    
-    <a-box position="1.025 1.96 -2.748" rotation="0 45 0" color="#4CC3D9" material="color:#439c2e" geometry=""></a-box>
 
-    <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D" material="color:#a7771f" geometry="height:1.53;radius:0.08"></a-cylinder>
+
+
+ <script src="./public/js/random.js"></script>  
+
+ <a-curve id="track1">
+      <a-curve-point id = "curve1"></a-curve-point>
+      <a-curve-point id = "curve2"></a-curve-point>
+      <a-curve-point id = "curve3"></a-curve-point>
+</a-curve>
+ 
+<script>
+c=GetLane();
+pos1="-100 5 "+c;
+pos2="0 5 "+c;
+pos3="50 5 "+c;
+
+var curve1 = document.getElementById('curve1');
+curve1.setAttribute("position", pos1);
+var curve2 = document.getElementById('curve2');
+curve2.setAttribute("position", pos2);
+var curve3 = document.getElementById('curve3');
+curve3.setAttribute("position", pos3);
+</script>
+
+<a-box alongpath="curve: #track1" dur=500000 color ="blue" material="color:green" geometry=""></a-box>
+
+
 
 <a-entity id="cameraWrapper" position="0 0 0" rotation="0 90 0">
       <a-camera></a-camera>
 </a-entity>
 </a-scene>
 <script>
-document.querySelector("#cameraWrapper").setAttribute('position', {x: 10, y: 4, z: 0});
+document.querySelector("#cameraWrapper").setAttribute('position', {x:10, y: 4, z: 0});
 </script>
-<script src="./public/js/car.js"></script>
+
+
+
+
 </body>
 </html>
