@@ -16,11 +16,11 @@ function GetLane(){
 	lane = lane % 3;
 
 	if (lane==0) { 
-		c=5;
+		c=8;
 	} else if (lane==1) {
 		c=-2;
 	} else {
-		c=-8;
+		c=-12;
 	}
 	return c;
 };
