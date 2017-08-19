@@ -2,6 +2,7 @@
 <html>
     <head>
         <title>VR Racing</title>
+        <meta charset="UTF-8">
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g=" crossorigin="anonymous"></script>
         <script src="https://aframe.io/releases/0.6.1/aframe.min.js"></script>
         <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v3.10.1/dist/aframe-extras.min.js"></script>
@@ -18,6 +19,9 @@
     <!-- <a-light type="directional" color="#FFF" intensity="0.5" position="0 0 0"></a-light>-->
     <a-light type="ambient" color="#FFF"></a-light>
     
+    <a-box position="1.025 1.96 -2.748" rotation="0 45 0" color="#4CC3D9" material="color:#439c2e" geometry=""></a-box>
+
+    <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D" material="color:#a7771f" geometry="height:1.53;radius:0.08"></a-cylinder>
 
 <a-entity id="cameraWrapper" position="0 0 0" rotation="0 90 0">
       <a-camera></a-camera>
@@ -26,6 +30,6 @@
 <script>
 document.querySelector("#cameraWrapper").setAttribute('position', {x: 10, y: 4, z: 0});
 </script>
-<script src="public/js/car.js"></script>
+<script src="./public/js/car.js"></script>
 </body>
 </html>
