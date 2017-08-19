@@ -6,6 +6,7 @@
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g=" crossorigin="anonymous"></script>
         <script src="https://aframe.io/releases/0.6.1/aframe.min.js"></script>
         <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v3.10.1/dist/aframe-extras.min.js"></script>
+    
     </head>
 
 <body>
@@ -25,13 +26,32 @@
         <a-cylinder position="0 0.75 0" radius="0.5" height="1.5" color="#FFC65D" material="color:#875c0d" geometry="radius:0.14"></a-cylinder>
     </a-entity>
 
+    <a-entity id="rightcirc" position="0 10 -5" geometry="primitive:circle" rotation="45 0 90"></a-entity>
 
+    <a-entity id="leftcirc" position="0 10 5" geometry="primitive:circle"       rotation="45 90 0"></a-entity>
 <a-entity id="cameraWrapper" position="0 0 0" rotation="0 90 0">
       <a-camera></a-camera>
 </a-entity>
 </a-scene>
 <script>
 document.querySelector("#cameraWrapper").setAttribute('position', {x: 10, y: 4, z: 0});
+
+function getcircrot(rightcirc){
+var rotation=document.getElementById('rightcirc').getAttribute("rotation");
+
+var lol=rotation.split(" ");
+var x=lol[0];
+var y=lol[1];
+var z=lol[2];
+var len=Math.sqrt((x*x)+(y*y)+(z*z));
+
+var alpha=Math.acos(rotation[0]/len)*57.29577951308;
+var beta=Math.acos(rotation[1]/len)*57.29577951308;
+var gamma=Math.acos(rotation[2]/len)*57.29577951308;
+document.querySelector("#rightcirc").setAttribute('rotation', {x:alpha,y:beta,z:gamma});
+};
+
+
 </script>
 <script src="./public/js/car.js"></script>
 </body>
