@@ -6,10 +6,12 @@
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g=" crossorigin="anonymous"></script>
         <script src="https://aframe.io/releases/0.6.1/aframe.min.js"></script>
         <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v3.10.1/dist/aframe-extras.min.js"></script>
-        <!-- for tracking of car -->
+
+        <script src="https://unpkg.com/aframe-rain@%5E1.0.2/build/aframe-rain.min.js" data-component-description="A-Frame rain component" data-component-names="rain" data-component-url="https://npmjs.com/package/aframe-rain" data-package-name="aframe-rain"></script>
         <script src="https://rawgit.com/aframevr/aframe/master/dist/aframe-master.min.js"></script> 
         <script src="https://rawgit.com/protyze/aframe-curve-component/master/dist/aframe-curve-component.min.js"></script> 
         <script src="https://rawgit.com/protyze/aframe-alongpath-component/master/dist/aframe-alongpath-component.min.js"></script>
+
     </head>
 
 <body>
@@ -18,7 +20,18 @@
         <img id="groundTexture" src="public/images/road.jpg">
         <img id="skyTexture" src="public/images/sky1.jpg">
     </a-assets>
-     <a-cylinder id="ground" src="#groundTexture" radius="60" height="0"></a-cylinder> 
+
+    <a-cylinder id="ground" src="#groundTexture" radius="60" height="0.1"></a-cylinder>
+    <a-sky id="background" src="#skyTexture" theta-length="90" radius="60"></a-sky>
+    
+    <a-light type="ambient" color="#FFF"></a-light>
+    
+    <a-entity><!--tree-->
+        <a-box position="0 2.084 0" color="#4CC3D9" material="color:#008006" geometry="height:1.35"></a-box>
+        <a-cylinder position="0 0.75 0" radius="0.5" height="1.5" color="#FFC65D" material="color:#875c0d" geometry="radius:0.14"></a-cylinder>
+    </a-entity>
+    
+    <a-entity rain="depthDensity:0.28;height:10;count:5000;color:#2da9fe;splash:false"></a-entity>
      <a-sky id="background" src="#skyTexture" theta-length="90" radius="60"></a-sky> 
      <a-light type="directional" color="#FFF" intensity="0.5" position="0 0 0"></a-light>
     <a-light type="ambient" color="#FFF"></a-light>
@@ -63,6 +76,7 @@
 <a-entity position="1.176 -0.748 -2.359" scale="0.5 0.5 0.5" geometry="primitive:sphere" material="color:#000000"></a-entity>
     </a-entity>
 </a-entity>
+
 <a-entity id="#fixed-car">
     <a-entity position="-4 3 3" scale="2 2 2">
     <a-box position="0.15 -0.3 -1.711" rotation="0 90 0" color="#4CC3D9" scale="1 1.8 1.5" material="color:#ff151c" geometry=""></a-box>
@@ -73,14 +87,36 @@
     <a-entity position="-1 -0.8 -2.4" scale="0.5 0.5 0.5" geometry="primitive:sphere" material="color:#000000"></a-entity>
 <a-entity position="1.176 -0.748 -2.359" scale="0.5 0.5 0.5" geometry="primitive:sphere" material="color:#000000"></a-entity>
 </a-entity>
+    <a-entity id="rightcirc" class="collidable" cursor-right position="0 10 -5" geometry="primitive:circle" rotation="45 0 90"></a-entity>
+    <a-entity id="leftcirc" class="collidable" cursor-left position="0 10 5" geometry="primitive:circle" rotation="45 90 0"></a-entity>
+    
+    <!-- <a-entity id="switcher" raycaster="objects: .collidable; showLine:true; near:12; far:13" position="10 4 0" near=12 far=13 daydream-controls="hand:right" gearvr-controls="hand:right" oculus-touch-controls="hand:right" vive-controls="hand:right" laser-controls="" rotation="0 90 0"></a-entity>-->
 
-
-<a-entity id="cameraWrapper" position="0 0 0" rotation="0 90 0">
-      <a-camera></a-camera>
-</a-entity>
+    <a-entity camera id="cameraWrapper" position="0 0 0" rotation="0 90 0">
+          <a-entity cursor="fuse: true; fuseTimeout: 100" position="0 0 -1" geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03" material="color: black; shader: flat">
+            </a-entity>
+    </a-entity>
 </a-scene>
+
 <script>
-document.querySelector("#cameraWrapper").setAttribute('position', {x:10, y: 4, z: 0});
+    document.querySelector("#cameraWrapper").setAttribute('position', {x: 10, y: 4, z: 0});
+
+    function getcircrot(rightcirc){
+        var rotation=document.getElementById('rightcirc').getAttribute("rotation");
+
+        var lol=rotation.split(" ");
+        var x=lol[0];
+        var y=lol[1];
+        var z=lol[2];
+        var len=Math.sqrt((x*x)+(y*y)+(z*z));
+
+        var alpha=Math.acos(rotation[0]/len)*57.29577951308;
+        var beta=Math.acos(rotation[1]/len)*57.29577951308;
+        var gamma=Math.acos(rotation[2]/len)*57.29577951308;
+        document.querySelector("#rightcirc").setAttribute('rotation', {x:alpha,y:beta,z:gamma});
+    };
+
+
 </script>
 
 
