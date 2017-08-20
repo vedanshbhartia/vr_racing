@@ -12,7 +12,7 @@ function GetLane(){
 	// {
 		// setTimeout(function () {}, 3000);
 	var lane = Math.floor(Math.random() * 89234879092);
-	console.log(lane);
+	//console.log(lane);
 	lane = lane % 3;
 
 	if (lane==0) { 

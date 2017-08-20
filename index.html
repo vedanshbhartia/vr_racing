@@ -10,16 +10,26 @@
         <script src="https://rawgit.com/aframevr/aframe/master/dist/aframe-master.min.js"></script> 
         <script src="https://rawgit.com/protyze/aframe-curve-component/master/dist/aframe-curve-component.min.js"></script> 
         <script src="https://rawgit.com/protyze/aframe-alongpath-component/master/dist/aframe-alongpath-component.min.js"></script>
+        <script
+              src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+              integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g="
+              crossorigin="anonymous"></script>
+        
     </head>
 
 <body>
 <a-scene physics="debug: true">
+    <a-curve id="track2">
+    <a-curve-point position="0 0 0"></a-curve-point>
+    <a-curve-point position = "15 0 0"></a-curve-point>
+    <!-- <a-curve-point id = "curve3"></a-curve-point> -->
+</a-curve>
     <a-assets>
-        <img id="groundTexture" src="public/images/road.jpg">
+        <img id="groundTexture" src="public/images/road1.jpg">
         <img id="skyTexture" src="public/images/sky1.jpg">
     </a-assets>
-     <a-cylinder id="ground" src="#groundTexture" radius="60" height="0"></a-cylinder> 
-     <a-sky id="background" src="#skyTexture" theta-length="90" radius="60"></a-sky> 
+     <a-cylinder alongpath="curve:#track2;loop:true;"id="ground" src="#groundTexture"  position="0 0 0" radius="60" height="0"></a-cylinder> 
+     <a-sky  id="background" src="#skyTexture" theta-length="90" radius="40"></a-sky> 
      <a-light type="directional" color="#FFF" intensity="0.5" position="0 0 0"></a-light>
     <a-light type="ambient" color="#FFF"></a-light>
 
@@ -37,7 +47,7 @@
     setInterval(
         function() {
             c=GetLane();
-            console.log(c);
+            // console.log(c);
             pos1="-100 3 "+c;
             pos2="0 3 "+c;
             pos3="50 3 "+c;
@@ -51,8 +61,8 @@
         1500
     );
 </script>
-
-<a-entity id="#moving-car" alongpath="curve: #track1; loop:true; dur:1500">
+<a-curve-point id="test-point" position="-4 3 3"></a-curve-point>
+<a-entity id="moving-car" alongpath="curve: #track1; loop:true; dur:1500; triggers:#test-point; triggerRadius: 1000;">
     <a-entity position="-4 0 5" scale="2 2 2">
     <a-box position="0.15 -0.3 -1.711" rotation="0 90 0" color="#4CC3D9" scale="1 1.8 1.5" material="color:#ff151c" geometry=""></a-box>
     <a-entity position="-2.986 3.642 -0.058" light=""></a-entity>
@@ -63,7 +73,7 @@
 <a-entity position="1.176 -0.748 -2.359" scale="0.5 0.5 0.5" geometry="primitive:sphere" material="color:#000000"></a-entity>
     </a-entity>
 </a-entity>
-<a-entity id="#fixed-car">
+<a-entity id="fixed-car">
     <a-entity position="-4 3 3" scale="2 2 2">
     <a-box position="0.15 -0.3 -1.711" rotation="0 90 0" color="#4CC3D9" scale="1 1.8 1.5" material="color:#ff151c" geometry=""></a-box>
     <a-entity position="-2.986 3.642 -0.058" light=""></a-entity>
@@ -83,6 +93,7 @@
 document.querySelector("#cameraWrapper").setAttribute('position', {x:10, y: 4, z: 0});
 </script>
 
+ <script src="./public/js/score.js"></script>  
 
 
 
