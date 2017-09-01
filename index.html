@@ -1,103 +1,91 @@
 <!DOCTYPE HTML>
 <html>
-    <head>
-        <title>VR Racing</title>
-        <meta charset="UTF-8">
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g=" crossorigin="anonymous"></script>
-        <script src="https://aframe.io/releases/0.6.1/aframe.min.js"></script>
-        <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v3.10.1/dist/aframe-extras.min.js"></script>
-        <!-- for tracking of car -->
-        <script src="https://rawgit.com/aframevr/aframe/master/dist/aframe-master.min.js"></script> 
-        <script src="https://rawgit.com/protyze/aframe-curve-component/master/dist/aframe-curve-component.min.js"></script> 
-        <script src="https://rawgit.com/protyze/aframe-alongpath-component/master/dist/aframe-alongpath-component.min.js"></script>
-        <script src="//cdn.rawgit.com/donmccurdy/aframe-physics-system/v2.0.0/dist/aframe-physics-system.min.js"></script>
-        <script
-              src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-              integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g="
-              crossorigin="anonymous"></script>
-        
-    </head>
+
+<head>
+    <title>VR Racing</title>
+    <meta charset="UTF-8">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g=" crossorigin="anonymous"></script>
+    <script src="https://aframe.io/releases/0.6.1/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v3.10.1/dist/aframe-extras.min.js"></script>
+    <!-- for tracking of car -->
+    <script src="https://rawgit.com/aframevr/aframe/master/dist/aframe-master.min.js"></script>
+    <script src="https://rawgit.com/protyze/aframe-curve-component/master/dist/aframe-curve-component.min.js"></script>
+    <script src="https://rawgit.com/protyze/aframe-alongpath-component/master/dist/aframe-alongpath-component.min.js"></script>
+    <script src="//cdn.rawgit.com/donmccurdy/aframe-physics-system/v2.0.0/dist/aframe-physics-system.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g=" crossorigin="anonymous"></script>
+</head>
 
 <body>
-<a-scene physics="debug: true">
-    <a-curve id="track2">
-    <a-curve-point position="0 0 0"></a-curve-point>
-    <a-curve-point position = "15 0 0"></a-curve-point>
-    <!-- <a-curve-point id = "curve3"></a-curve-point> -->
-</a-curve>
-    <a-assets>
-        <img id="groundTexture" src="public/images/road1.jpg">
-        <img id="skyTexture" src="public/images/sky1.jpg">
-    </a-assets>
-     <a-cylinder static-body alongpath="curve:#track2;loop:true;" id="ground" src="#groundTexture"  position="0 0 0" radius="100" height="0"></a-cylinder> 
-     <a-sky  id="background" src="#skyTexture" theta-length="90" radius="40"></a-sky> 
-     <a-light type="directional" color="#FFF" intensity="0.5" position="0 0 0"></a-light>
-    <a-light type="ambient" color="#FFF"></a-light>
-
-
-
- <script src="./public/js/random.js"></script>  
-
- <a-curve id="track1">
-    <a-curve-point id = "curve1" position="-100 3 8"></a-curve-point>
-    <a-curve-point id = "curve2" position="-100 3 8"></a-curve-point>
-    <a-curve-point id = "curve3" position="-100 3 8"></a-curve-point>
-</a-curve>
- 
-<script>
-    setInterval(
-        function() {
-            c=GetLane();
-            // console.log(c);
-            pos1="-100 3 "+c;
-            pos2="0 3 "+c;
-            pos3="50 3 "+c;
-            var curve1 = document.getElementById('curve1');
-            curve1.setAttribute("position", pos1);
-            var curve2 = document.getElementById('curve2');
-            curve2.setAttribute("position", pos2);
-            var curve3 = document.getElementById('curve3');
-            curve3.setAttribute("position", pos3);        
-        },
-        10000
-    );
-</script>
-<!-- <a-curve-point id="test-point" position="-4 3 3"></a-curve-point> -->
-<a-entity static-body id="moving-car" alongpath="curve: #track1; loop:true; dur:10000; triggers:#test-point; triggerRadius: 1000;">
-    <a-entity position="-4 0 5" scale="2 2 2">
-    <a-box position="0.15 -0.3 -1.711" rotation="0 90 0" color="#4CC3D9" scale="1 1.8 1.5" material="color:#ff151c" geometry=""></a-box>
-    <a-entity position="-2.986 3.642 -0.058" light=""></a-entity>
-    <a-entity position="0.138 -0.698 -1.711" geometry="width:4" material="color:#249cff"></a-entity>
-    <a-entity position="1.192 -0.683 -1.069" scale="0.5 0.5 0.5" geometry="primitive:sphere" material="color:#000000"></a-entity>
-    <a-entity position="-0.992 -0.757 -1.086" scale="0.5 0.5 0.5" geometry="primitive:sphere" material="color:#000000"></a-entity>
-    <a-entity position="-1 -0.8 -2.4" scale="0.5 0.5 0.5" geometry="primitive:sphere" material="color:#000000"></a-entity>
-    <a-entity position="1.176 -0.748 -2.359" scale="0.5 0.5 0.5" geometry="primitive:sphere" material="color:#000000"></a-entity>
-    </a-entity>
-</a-entity>
-<a-entity dynamic-body id="fixed-car" >
-    <a-entity position="-4 3 3" scale="2 2 2">
-    <a-box position="0.15 -0.3 -1.711" rotation="0 90 0" color="#4CC3D9" scale="1 1.8 1.5" material="color:#ff151c" geometry=""></a-box>
-    <a-entity position="-2.986 3.642 -0.058" light=""></a-entity>
-    <a-entity position="0.138 -0.698 -1.711" geometry="width:4" material="color:#249cff"></a-entity>
-    <a-entity position="1.192 -0.683 -1.069" scale="0.5 0.5 0.5" geometry="primitive:sphere" material="color:#000000"></a-entity>
-    <a-entity position="-0.992 -0.757 -1.086" scale="0.5 0.5 0.5" geometry="primitive:sphere" material="color:#000000"></a-entity>
-    <a-entity position="-1 -0.8 -2.4" scale="0.5 0.5 0.5" geometry="primitive:sphere" material="color:#000000"></a-entity>
-    <a-entity position="1.176 -0.748 -2.359" scale="0.5 0.5 0.5" geometry="primitive:sphere" material="color:#000000"></a-entity>
-    </a-entity>
-</a-entity>
-
-<a-entity id="cameraWrapper" position="0 0 0" rotation="0 90 0">
-      <a-camera></a-camera>
-</a-entity>
-</a-scene>
-<script>
-document.querySelector("#cameraWrapper").setAttribute('position', {x:10, y: 4, z: 0});
-</script>
-
- <!-- <script src="./public/js/score.js"></script>   -->
- <script src="./public/js/collision.js"></script>  
-
-
-
+    <a-scene physics="debug: true">
+        <a-curve id="track2">
+            <a-curve-point position="0 0 0"></a-curve-point>
+            <a-curve-point position="10 0 0"></a-curve-point>
+            <!-- <a-curve-point id = "curve3"></a-curve-point> -->
+        </a-curve>
+        <a-assets>
+            <img id="groundTexture" src="public/images/road1.jpg">
+            <img id="skyTexture" src="public/images/sky1.jpg">
+        </a-assets>
+        <a-cylinder static-body alongpath="curve:#track2; loop:true;" id="ground" src="#groundTexture" position="0 0 0" radius="60" height="0"></a-cylinder>
+        <a-sky id="background" src="#skyTexture" theta-length="90" radius="40"></a-sky>
+        <a-light type="directional" color="#FFF" intensity="0.5" position="0 0 0"></a-light>
+        <a-light type="ambient" color="#FFF"></a-light>
+        <script src="./public/js/random.js"></script>
+        <a-curve id="track1">
+            <a-curve-point id="curve1" position="-100 3 8"></a-curve-point>
+            <a-curve-point id="curve2" position="-100 3 8"></a-curve-point>
+            <a-curve-point id="curve3" position="-100 3 8"></a-curve-point>
+        </a-curve>
+        <script>
+        setInterval(
+            function() {
+                c = GetLane();
+                // console.log(c);
+                pos1 = "-100 3 " + c;
+                pos2 = "0 3 " + c;
+                pos3 = "50 3 " + c;
+                var curve1 = document.getElementById('curve1');
+                curve1.setAttribute("position", pos1);
+                var curve2 = document.getElementById('curve2');
+                curve2.setAttribute("position", pos2);
+                var curve3 = document.getElementById('curve3');
+                curve3.setAttribute("position", pos3);
+            },
+            10000
+        );
+        </script>
+        <a-curve-point id="test-point" position="-4 3 3"></a-curve-point>
+        <a-entity static-body id="moving-car" alongpath="curve: #track1; loop:true; dur:10000; triggerRadius:100; delay:0;">
+            <a-entity position="-4 0 5" scale="2 2 2">
+                <a-box position="0.15 -0.3 -1.711" rotation="0 90 0" color="#4CC3D9" scale="1 1.8 1.5" material="color:#ff151c" geometry=""></a-box>
+                <a-entity position="-2.986 3.642 -0.058" light=""></a-entity>
+                <a-entity position="0.138 -0.698 -1.711" geometry="width:4" material="color:#249cff"></a-entity>
+                <a-entity position="1.192 -0.683 -1.069" scale="0.5 0.5 0.5" geometry="primitive:sphere" material="color:#000000"></a-entity>
+                <a-entity position="-0.992 -0.757 -1.086" scale="0.5 0.5 0.5" geometry="primitive:sphere" material="color:#000000"></a-entity>
+                <a-entity position="-1 -0.8 -2.4" scale="0.5 0.5 0.5" geometry="primitive:sphere" material="color:#000000"></a-entity>
+                <a-entity position="1.176 -0.748 -2.359" scale="0.5 0.5 0.5" geometry="primitive:sphere" material="color:#000000"></a-entity>
+            </a-entity>
+        </a-entity>
+        <a-entity dynamic-body id="fixed-car">
+            <a-entity position="-4 3 3" scale="2 2 2">
+                <a-box position="0.15 -0.3 -1.711" rotation="0 90 0" color="#4CC3D9" scale="1 1.8 1.5" material="color:#ff151c" geometry=""></a-box>
+                <a-entity position="-2.986 3.642 -0.058" light=""></a-entity>
+                <a-entity position="0.138 -0.698 -1.711" geometry="width:4" material="color:#249cff"></a-entity>
+                <a-entity position="1.192 -0.683 -1.069" scale="0.5 0.5 0.5" geometry="primitive:sphere" material="color:#000000"></a-entity>
+                <a-entity position="-0.992 -0.757 -1.086" scale="0.5 0.5 0.5" geometry="primitive:sphere" material="color:#000000"></a-entity>
+                <a-entity position="-1 -0.8 -2.4" scale="0.5 0.5 0.5" geometry="primitive:sphere" material="color:#000000"></a-entity>
+                <a-entity position="1.176 -0.748 -2.359" scale="0.5 0.5 0.5" geometry="primitive:sphere" material="color:#000000"></a-entity>
+            </a-entity>
+        </a-entity>
+        <a-entity id="cameraWrapper" position="0 0 0" rotation="0 90 0">
+            <a-camera></a-camera>
+        </a-entity>
+    </a-scene>
+    <script>
+    document.querySelector("#cameraWrapper").setAttribute('position', { x: 10, y: 4, z: 0 });
+    </script>
+    <script src="./public/js/score.js"></script>
+    <script src="./public/js/collision.js"></script>
 </body>
+
 </html>
