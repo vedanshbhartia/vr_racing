@@ -13,10 +13,6 @@ function handleOrientation(event) {
 
     document.getElementsByClassName('control-this')[0].setAttribute("position", temp_pos);
     
-    console.log("-----------------------------------------");
-    console.log(temp_pos);
-    console.log(alpha);
-    console.log("-------------------------------------------");
     }
 
 window.addEventListener('deviceorientation', handleOrientation);
