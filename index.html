@@ -8,12 +8,13 @@
     <script src="./public/js/library/curve.js"></script>
     <script src="./public/js/library/alongpath.js"></script>
 </head>
+
 <body>
     <a-scene>
-	    <a-entity position="-10 10 0" rotation="0 90 0">
-	    <a-entity id="score_overlay" text="align: center; width: 100;value:0; color:red; height:100"></a-entity>
-	    </a-entity>
-	    <a-curve id="track2">
+        <a-entity position="-10 10 0" rotation="0 90 0">
+            <a-entity id="score_overlay" text="align: center; width: 100;value:0; color:red; height:100"></a-entity>
+        </a-entity>
+        <a-curve id="track2">
             <a-curve-point position="0 0 0"></a-curve-point>
             <a-curve-point position="16 0 0"></a-curve-point>
         </a-curve>
@@ -48,8 +49,8 @@
             5000
         );
         </script>
-        <a-curve-point id="test-point" ></a-curve-point>
-        <a-entity static-body id="moving-car"  alongpath="curve: #track1; loop:true; dur:5000; triggerRadius:8; delay:0;">
+        <a-curve-point id="test-point"></a-curve-point>
+        <a-entity static-body id="moving-car" alongpath="curve: #track1; loop:true; dur:5000; triggerRadius:8; delay:0;">
             <a-entity position="-4 3 3" scale="2 2 2">
                 <a-box position="0.15 -0.3 -1.711" rotation="0 90 0" color="#4CC3D9" scale="1 1.8 1.5" material="color:#ff151c" geometry=""></a-box>
                 <a-entity position="-2.986 3.642 -0.058" light=""></a-entity>
@@ -72,8 +73,6 @@
             </a-entity>
         </a-entity>
         <a-entity position="10 4 0" rotation="0 90 0">
-
-
             <a-camera></a-camera>
         </a-entity>
     </a-scene>
