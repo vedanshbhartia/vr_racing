@@ -10,7 +10,10 @@
 </head>
 <body>
     <a-scene>
-        <a-curve id="track2">
+	    <a-entity position="-10 10 0" rotation="0 90 0">
+	    <a-entity id="score_overlay" text="align: center; width: 100;value:0; color:red; height:100"></a-entity>
+	    </a-entity>
+	    <a-curve id="track2">
             <a-curve-point position="0 0 0"></a-curve-point>
             <a-curve-point position="16 0 0"></a-curve-point>
         </a-curve>
