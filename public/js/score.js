@@ -15,6 +15,7 @@ document.getElementById('curve2').addEventListener('alongpath-trigger-activated'
             collision = true;
             alert('You Lost! Your Score is ' + score);
             clearInterval(timerId);
+            interval = 5000;
         }
     }, 1);
 });

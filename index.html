@@ -32,24 +32,6 @@
             <a-curve-point id="curve2"></a-curve-point>
             <a-curve-point id="curve3"></a-curve-point>
         </a-curve>
-        <script>
-        setInterval(
-            function() {
-                c = GetLane();
-                pos1 = "-100 0 " + c;
-                pos2 = "0 0 " + c;
-                pos3 = "50 0 " + c;
-                var curve1 = document.getElementById('curve1');
-                curve1.setAttribute("position", pos1);
-                var curve2 = document.getElementById('curve2');
-                curve2.setAttribute("position", pos2);
-                var curve3 = document.getElementById('curve3');
-                curve3.setAttribute("position", pos3);
-            },
-            5000
-        );
-        </script>
-        <a-curve-point id="test-point"></a-curve-point>
         <a-entity static-body id="moving-car" alongpath="curve: #track1; loop:true; dur:5000; triggerRadius:8; delay:0;">
             <a-entity position="-4 3 3" scale="2 2 2">
                 <a-box position="0.15 -0.3 -1.711" rotation="0 90 0" color="#4CC3D9" scale="1 1.8 1.5" material="color:#ff151c" geometry=""></a-box>
