@@ -29,9 +29,9 @@ function callback() {
     curve3.setAttribute("position", pos3);
     console.log(starttime);
     updatetime = new Date().getTime();
-    interval -= (updatetime - starttime) / 50; // actually this will kill your browser when goes to 0, but shows the idea
-    starttime = updatetime;
-    console.log(interval);
+    console.log(updatetime);
+    interval =5000*(Math.pow(0.55, ((updatetime - starttime)/40000))); // actually this will kill your browser when goes to 0, but shows the idea
+    console.log("interval" + interval);
     loopdur = document.getElementById("moving-car");
     loopdur.setAttribute("alongpath", "curve: #track1; loop:true; triggerRadius:8; delay:0; dur:" + interval + ";");
     setTimeout(callback, interval);

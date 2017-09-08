@@ -6,7 +6,7 @@ function handleOrientation(event) {
     if (alpha > 90) { alpha = 90 };
     if (alpha < -90) { alpha = -90 };
 
-    const maxwidth = 30;
+    const maxwidth =40;
 
     var new_z = (maxwidth * (alpha / 180));
     var temp_pos = "0 0 " + new_z;
