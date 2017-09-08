@@ -1,8 +1,10 @@
 localStorage.setItem('score_vr_race', 0);
+let collision = false;
+let timerId = 0;
 
 document.getElementById('curve2').addEventListener('alongpath-trigger-activated', function() {
-    let collision = false;
-    let timerId = setInterval(function() {
+    collision = false;
+    timerId = setInterval(function() {
         coord_moving = document.getElementById('moving-car').getAttribute('position');
         coord_fixed = document.getElementById('fixed-car').getAttribute('position');
         if (coord_fixed.z >= coord_moving.z - 3 && coord_fixed.z <= coord_moving.z + 3) {
@@ -15,18 +17,17 @@ document.getElementById('curve2').addEventListener('alongpath-trigger-activated'
             clearInterval(timerId);
         }
     }, 1);
-    document.getElementById('curve2').addEventListener('alongpath-trigger-deactivated', function() {
-        clearInterval(timerId);
-        if(collision){
-            collision = false;
-            localStorage.setItem('score_vr_race', 0);
-            var scoredisplay = document.getElementById("score_overlay");
-            scoredisplay.setAttribute("text", "align: center; width: 100;color:red; height:100; value:" + localStorage.getItem('score_vr_race') + ";");    
-        }
-    });
 });
 
 document.getElementById('curve2').addEventListener('alongpath-trigger-deactivated', function() {
+    clearInterval(timerId);
+    if (collision) {
+        collision = false;
+        localStorage.setItem('score_vr_race', 0);
+        var scoredisplay = document.getElementById("score_overlay");
+        scoredisplay.setAttribute("text", "align: center; width: 100;color:red; height:100; value:" + localStorage.getItem('score_vr_race') + ";");
+        return;
+    }
     localStorage.setItem('score_vr_race', parseInt(localStorage.getItem('score_vr_race')) + 1);
     var scoredisplay = document.getElementById("score_overlay");
     scoredisplay.setAttribute("text", "align: center; width: 100;color:red; height:100; value:" + localStorage.getItem('score_vr_race') + ";");
