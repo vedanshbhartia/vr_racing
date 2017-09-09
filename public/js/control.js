@@ -1,22 +1,18 @@
 var car = document.querySelector('.control-this');
 
 function handleOrientation(event) {
-    var alpha    = event.beta;
-    
-    if (alpha >  90) {alpha =  90};
-    if (alpha < -90) {alpha = -90};
+    var alpha = event.beta;
 
-    const maxwidth=55;
+    if (alpha > 90) { alpha = 90 };
+    if (alpha < -90) { alpha = -90 };
 
-    var new_z = (maxwidth*(alpha/180));
-    var temp_pos = "0 0 "+new_z;
+    const maxwidth =40;
+
+    var new_z = (maxwidth * (alpha / 180));
+    var temp_pos = "0 0 " + new_z;
 
     document.getElementsByClassName('control-this')[0].setAttribute("position", temp_pos);
-    
-    console.log("-----------------------------------------");
-    console.log(temp_pos);
-    console.log(alpha);
-    console.log("-------------------------------------------");
-    }
+
+}
 
 window.addEventListener('deviceorientation', handleOrientation);
