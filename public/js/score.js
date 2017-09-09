@@ -3,6 +3,7 @@ let collisionCar = false;
 let collisionCoin = false;
 let timerIdCar = 0;
 let timerIdCoin = 0;
+let visibleCoin = true;
 
 function checkCollision(z1, z2) {
     if (z1 >= z2 - 3 && z1 <= z2 + 3) {
@@ -44,6 +45,10 @@ document.getElementById('curve2').addEventListener('alongpath-trigger-deactivate
     console.log(localStorage.getItem('score_vr_race'));
 });
 
+document.getElementById('coin1').addEventListener('alongpath-trigger-activated', function() {
+    document.getElementById('coin').setAttribute('visible',true);
+    });
+
 document.getElementById('coin2').addEventListener('alongpath-trigger-activated', function() {
     collisionCoin = false;
     timerIdCoin = setInterval(function() {
@@ -53,6 +58,7 @@ document.getElementById('coin2').addEventListener('alongpath-trigger-activated',
         if (collisionCoin) {
             var score = localStorage.getItem('score_vr_race');
             localStorage.setItem('score_vr_race', parseInt(localStorage.getItem('score_vr_race')) + 5);
+            document.getElementById('coin').setAttribute('visible',false);
             clearInterval(timerIdCoin);
         }
     }, 1);
