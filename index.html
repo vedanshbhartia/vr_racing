@@ -22,17 +22,26 @@
             <img id="groundTexture" src="public/images/road1.jpg">
             <img id="skyTexture" src="public/images/sky1.jpg">
         </a-assets>
-        <a-cylinder static-body alongpath="curve:#track2; loop:true;" id="ground" src="#groundTexture" radius="60" height="0"></a-cylinder>
+        <a-cylinder alongpath="curve:#track2; loop:true;" id="ground" src="#groundTexture" radius="60" height="0"></a-cylinder>
         <a-sky id="background" src="#skyTexture" theta-length="90" radius="40"></a-sky>
         <a-light type="directional" color="#FFF" intensity="0.5" position="0 0 0"></a-light>
         <a-light type="ambient" color="#FFF"></a-light>
-        <script src="./public/js/random.js"></script>
         <a-curve id="track1">
             <a-curve-point id="curve1"></a-curve-point>
             <a-curve-point id="curve2"></a-curve-point>
             <a-curve-point id="curve3"></a-curve-point>
         </a-curve>
-        <a-entity static-body id="moving-car" alongpath="curve: #track1; loop:true; dur:5000; triggerRadius:8; delay:0;">
+        <a-curve id="track3">
+            <a-curve-point id="coin1"></a-curve-point>
+            <a-curve-point id="coin2"></a-curve-point>
+            <a-curve-point id="coin3"></a-curve-point>
+        </a-curve>
+        <script src="./public/js/random.js"></script>
+        <a-entity id="coin" position="-100 0 0" alongpath="curve: #track3; loop:true; dur:5000; triggerRadius:8; delay:0;">
+            <a-box color="yellow" position="1 1 1 ">
+            </a-box>
+        </a-entity>
+        <a-entity id="moving-car" alongpath="curve: #track1; loop:true; dur:5000; triggerRadius:8; delay:0;">
             <a-entity position="-4 3 3" scale="2 2 2">
                 <a-box position="0.15 -0.3 -1.711" rotation="0 90 0" color="#4CC3D9" scale="1 1.8 1.5" material="color:#ff151c" geometry=""></a-box>
                 <a-entity position="-2.986 3.642 -0.058" light=""></a-entity>
@@ -43,7 +52,7 @@
                 <a-entity position="1.176 -0.748 -2.359" scale="0.5 0.5 0.5" geometry="primitive:sphere" material="color:#000000"></a-entity>
             </a-entity>
         </a-entity>
-        <a-entity dynamic-body id="fixed-car" class="control-this">
+        <a-entity id="fixed-car" class="control-this">
             <a-entity position="-4 3 3" scale="2 2 2">
                 <a-box position="0.15 -0.3 -1.711" rotation="0 90 0" color="#4CC3D9" scale="1 1.8 1.5" material="color:#ff151c" geometry=""></a-box>
                 <a-entity position="-2.986 3.642 -0.058" light=""></a-entity>
