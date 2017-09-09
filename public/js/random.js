@@ -29,7 +29,7 @@ function callbackCar() {
     console.log(starttime);
     updatetime = new Date().getTime();
     console.log(updatetime);
-    interval = 5000 * (Math.pow(0.55, ((updatetime - starttime) / 40000)));
+    interval = 200+5000 * (Math.pow(0.55, ((updatetime - starttime) / 40000)));
     console.log("interval" + interval);
     loopdur = document.getElementById("moving-car");
     loopdur.setAttribute("alongpath", "curve: #track1; loop:true; triggerRadius:8; delay:0; dur:" + interval + ";");

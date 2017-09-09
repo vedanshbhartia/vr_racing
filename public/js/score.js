@@ -47,9 +47,12 @@ document.getElementById('curve2').addEventListener('alongpath-trigger-deactivate
 
 document.getElementById('coin1').addEventListener('alongpath-trigger-activated', function() {
     document.getElementById('coin').setAttribute('visible',true);
-    });
+});
 
 document.getElementById('coin2').addEventListener('alongpath-trigger-activated', function() {
+
+
+
     collisionCoin = false;
     timerIdCoin = setInterval(function() {
         coord_fixed = document.getElementById('fixed-car').getAttribute('position');
@@ -73,3 +76,5 @@ document.getElementById('coin2').addEventListener('alongpath-trigger-deactivated
     }
     console.log(localStorage.getItem('score_vr_race'));
 });
+
+
