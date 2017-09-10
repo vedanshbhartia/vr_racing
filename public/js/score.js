@@ -1,3 +1,4 @@
+//sets initial score to 0
 localStorage.setItem('score_vr_race', 0);
 let collisionCar = false;
 let collisionCoin = false;
@@ -5,6 +6,8 @@ let timerIdCar = 0;
 let timerIdCoin = 0;
 let visibleCoin = true;
 
+//function to check whether two cars are colliding on the basis if their z axis
+//coordinates
 function checkCollision(z1, z2) {
     if (z1 >= z2 - 3 && z1 <= z2 + 3) {
         return true;
@@ -13,11 +16,13 @@ function checkCollision(z1, z2) {
     return false;
 }
 
+//updates score
 function updateDisplayScore() {
     var scoredisplay = document.getElementById("score_overlay");
     scoredisplay.setAttribute("text", "align: center; width: 100;color:red; height:100; value:" + localStorage.getItem('score_vr_race') + ";");
 }
 
+//checks for collisions
 document.getElementById('curve2').addEventListener('alongpath-trigger-activated', function() {
     collisionCar = false;
     timerIdCar = setInterval(function() {
@@ -34,6 +39,7 @@ document.getElementById('curve2').addEventListener('alongpath-trigger-activated'
     }, 1);
 });
 
+//increments score in case of avoiding collision successfully
 document.getElementById('curve2').addEventListener('alongpath-trigger-deactivated', function() {
     clearInterval(timerIdCar);
     if (collisionCar) {
@@ -49,6 +55,7 @@ document.getElementById('coin1').addEventListener('alongpath-trigger-activated',
     document.getElementById('coin').setAttribute('visible',true);
 });
 
+//increments score if user collects coin
 document.getElementById('coin2').addEventListener('alongpath-trigger-activated', function() {
 
 

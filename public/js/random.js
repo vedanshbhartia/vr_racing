@@ -1,6 +1,9 @@
 var interval = 5000;
+
+//get current time
 var starttime = new Date().getTime();
 
+//function to assign lane to incoming car
 function GetLane() {
     var i = 0;
     var c = 0;
@@ -17,6 +20,7 @@ function GetLane() {
     return pos;
 };
 
+//this function is used to call incoming car
 function callbackCar() {
     console.log('callback!');
     var pos = GetLane();
@@ -36,6 +40,7 @@ function callbackCar() {
     setTimeout(callbackCar, interval);
 }
 
+//used to generate coin
 function callbackCoin() {
     console.log('callback coin!');
     var pos = GetLane();
