@@ -2,73 +2,73 @@
 <html>
 
 <head>
-    <title>VR Racing</title>
-    <meta charset="UTF-8">
-    <script src="https://aframe.io/releases/0.6.1/aframe.min.js"></script>
-    <script src="./public/js/library/curve.js"></script>
-    <script src="./public/js/library/alongpath.js"></script>
+	<title>VR Racing</title>
+	<meta charset="UTF-8">
+	<script src="https://aframe.io/releases/0.6.1/aframe.min.js"></script>
+	<script src="./public/js/library/curve.js"></script>
+	<script src="./public/js/library/alongpath.js"></script>
 </head>
 
 <body>
-    <a-scene>
-        <a-entity position="-10 10 0" rotation="0 90 0">
-            <a-entity id="score_overlay" text="align: center; width: 100;value:0; color:red; height:100"></a-entity>
-        </a-entity>
-        <a-curve id="track2">
-            <a-curve-point position="0 0 0"></a-curve-point>
-            <a-curve-point position="16 0 0"></a-curve-point>
-        </a-curve>
-        <a-assets>
-            <img id="groundTexture" src="public/images/road1.jpg">
-            <img id="skyTexture" src="public/images/sky1.jpg">
-        </a-assets>
-        <a-cylinder alongpath="curve:#track2; loop:true;" id="ground" src="#groundTexture" radius="60" height="0"></a-cylinder>
-        <a-sky id="background" src="#skyTexture" theta-length="90" radius="40"></a-sky>
-        <a-light type="directional" color="#FFF" intensity="0.5" position="0 0 0"></a-light>
-        <a-light type="ambient" color="#FFF"></a-light>
-        <a-curve id="track1">
-            <a-curve-point id="curve1"></a-curve-point>
-            <a-curve-point id="curve2"></a-curve-point>
-            <a-curve-point id="curve3"></a-curve-point>
-        </a-curve>
-        <a-curve id="track3">
-            <a-curve-point id="coin1"></a-curve-point>
-            <a-curve-point id="coin2"></a-curve-point>
-            <a-curve-point id="coin3"></a-curve-point>
-        </a-curve>
-        <script src="./public/js/random.js"></script>
-        <a-entity id="coin" visible="true" position="-100 0 0" alongpath="curve: #track3; loop:true; dur:5000; triggerRadius:8; delay:0;">
-            <a-box color="yellow" position="1 1 1 ">
-            </a-box>
-        </a-entity>
-        <a-entity id="moving-car" alongpath="curve: #track1; loop:true; dur:5000; triggerRadius:8; delay:0;">
-            <a-entity position="-4 3 3" scale="2 2 2">
-                <a-box position="0.15 -0.3 -1.711" rotation="0 90 0" color="#4CC3D9" scale="1 1.8 1.5" material="color:#ff151c" geometry=""></a-box>
-                <a-entity position="-2.986 3.642 -0.058" light=""></a-entity>
-                <a-entity position="0.138 -0.698 -1.711" geometry="width:4" material="color:#249cff"></a-entity>
-                <a-entity position="1.192 -0.683 -1.069" scale="0.5 0.5 0.5" geometry="primitive:sphere" material="color:#000000"></a-entity>
-                <a-entity position="-0.992 -0.757 -1.086" scale="0.5 0.5 0.5" geometry="primitive:sphere" material="color:#000000"></a-entity>
-                <a-entity position="-1 -0.8 -2.4" scale="0.5 0.5 0.5" geometry="primitive:sphere" material="color:#000000"></a-entity>
-                <a-entity position="1.176 -0.748 -2.359" scale="0.5 0.5 0.5" geometry="primitive:sphere" material="color:#000000"></a-entity>
-            </a-entity>
-        </a-entity>
-        <a-entity id="fixed-car" class="control-this">
-            <a-entity position="-4 3 3" scale="2 2 2">
-                <a-box position="0.15 -0.3 -1.711" rotation="0 90 0" color="#4CC3D9" scale="1 1.8 1.5" material="color:#ff151c" geometry=""></a-box>
-                <a-entity position="-2.986 3.642 -0.058" light=""></a-entity>
-                <a-entity position="0.138 -0.698 -1.711" geometry="width:4" material="color:#249cff"></a-entity>
-                <a-entity position="1.192 -0.683 -1.069" scale="0.5 0.5 0.5" geometry="primitive:sphere" material="color:#000000"></a-entity>
-                <a-entity position="-0.992 -0.757 -1.086" scale="0.5 0.5 0.5" geometry="primitive:sphere" material="color:#000000"></a-entity>
-                <a-entity position="-1 -0.8 -2.4" scale="0.5 0.5 0.5" geometry="primitive:sphere" material="color:#000000"></a-entity>
-                <a-entity position="1.176 -0.748 -2.359" scale="0.5 0.5 0.5" geometry="primitive:sphere" material="color:#000000"></a-entity>
-            </a-entity>
-        </a-entity>
-        <a-entity position="10 4 0" rotation="0 90 0">
-            <a-camera></a-camera>
-        </a-entity>
-    </a-scene>
-    <script src="./public/js/control.js"></script>
-    <script src="./public/js/score.js"></script>
+	<a-scene>
+		<a-entity position="-10 10 0" rotation="0 90 0">
+			<a-entity id="score_overlay" text="align: center; width: 100;value:0; color:red; height:100"></a-entity>
+		</a-entity>
+		<a-curve id="track2">
+			<a-curve-point position="0 0 0"></a-curve-point>
+			<a-curve-point position="16 0 0"></a-curve-point>
+		</a-curve>
+		<a-assets>
+			<img id="groundTexture" src="public/images/road1.jpg">
+			<img id="skyTexture" src="public/images/sky1.jpg">
+		</a-assets>
+		<a-cylinder alongpath="curve:#track2; loop:true;" id="ground" src="#groundTexture" radius="60" height="0"></a-cylinder>
+		<a-sky id="background" src="#skyTexture" theta-length="90" radius="40"></a-sky>
+		<a-light type="directional" color="#FFF" intensity="0.5" position="0 0 0"></a-light>
+		<a-light type="ambient" color="#FFF"></a-light>
+		<a-curve id="track1">
+			<a-curve-point id="curve1"></a-curve-point>
+			<a-curve-point id="curve2"></a-curve-point>
+			<a-curve-point id="curve3"></a-curve-point>
+		</a-curve>
+		<a-curve id="track3">
+			<a-curve-point id="coin1"></a-curve-point>
+			<a-curve-point id="coin2"></a-curve-point>
+			<a-curve-point id="coin3"></a-curve-point>
+		</a-curve>
+		<script src="./public/js/random.js"></script>
+		<a-entity id="coin" visible="true" position="-100 0 0" alongpath="curve: #track3; loop:true; dur:5000; triggerRadius:8; delay:0; rotate:true;">
+			<a-cylinder id="sikka" color="yellow" height=0.1 radius=1 position="1 1 1" rotation="0 0 90"></a-cylinder>
+		</a-entity>
+		<a-entity id="moving-car" alongpath="curve: #track1; loop:true; dur:5000; triggerRadius:8; delay:0;">
+			<a-entity position="-4 3 3" scale="2 2 2">
+				<a-box position="0.15 -0.3 -1.711" rotation="0 90 0" color="#4CC3D9" scale="1 1.8 1.5" material="color:#ff151c" geometry=""></a-box>
+				<a-entity position="-2.986 3.642 -0.058" light=""></a-entity>
+				<a-entity position="0.138 -0.698 -1.711" geometry="width:4" material="color:#249cff"></a-entity>
+				<a-entity position="1.192 -0.683 -1.069" scale="0.5 0.5 0.5" geometry="primitive:sphere" material="color:#000000"></a-entity>
+				<a-entity position="-0.992 -0.757 -1.086" scale="0.5 0.5 0.5" geometry="primitive:sphere" material="color:#000000"></a-entity>
+				<a-entity position="-1 -0.8 -2.4" scale="0.5 0.5 0.5" geometry="primitive:sphere" material="color:#000000"></a-entity>
+				<a-entity position="1.176 -0.748 -2.359" scale="0.5 0.5 0.5" geometry="primitive:sphere" material="color:#000000"></a-entity>
+			</a-entity>
+		</a-entity>
+		<a-entity id="fixed-car" class="control-this">
+			<a-entity position="-4 3 3" scale="2 2 2">
+				<a-box position="0.15 -0.3 -1.711" rotation="0 90 0" color="#4CC3D9" scale="1 1.8 1.5" material="color:#ff151c" geometry=""></a-box>
+				<a-entity position="-2.986 3.642 -0.058" light=""></a-entity>
+				<a-entity position="0.138 -0.698 -1.711" geometry="width:4" material="color:#249cff"></a-entity>
+				<a-entity position="1.192 -0.683 -1.069" scale="0.5 0.5 0.5" geometry="primitive:sphere" material="color:#000000"></a-entity>
+				<a-entity position="-0.992 -0.757 -1.086" scale="0.5 0.5 0.5" geometry="primitive:sphere" material="color:#000000"></a-entity>
+				<a-entity position="-1 -0.8 -2.4" scale="0.5 0.5 0.5" geometry="primitive:sphere" material="color:#000000"></a-entity>
+				<a-entity position="1.176 -0.748 -2.359" scale="0.5 0.5 0.5" geometry="primitive:sphere" material="color:#000000"></a-entity>
+			</a-entity>
+		</a-entity>
+		<a-entity position="10 4 0" rotation="0 90 0">
+			<a-camera></a-camera>
+		</a-entity>
+	</a-scene>
+
+	<script src="./public/js/control.js"></script>
+	<script src="./public/js/score.js"></script>
 </body>
 
 </html>
