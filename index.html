@@ -18,13 +18,13 @@
 			<a-curve-point position="0 0 0"></a-curve-point>
 			<a-curve-point position="16 0 0"></a-curve-point>
 		</a-curve>
-		<a-assets>
-			<img id="groundTexture" src="public/images/road1.jpg">
-			<img id="skyTexture" src="public/images/sky1.jpg">
-		</a-assets>
-		<a-cylinder alongpath="curve:#track2; loop:true;" id="ground" src="#groundTexture" radius="60" height="0"></a-cylinder>
-		<a-sky id="background" src="#skyTexture" theta-length="90" radius="40"></a-sky>
-		<a-light type="directional" color="#FFF" intensity="0.5" position="0 0 0"></a-light>
+		<a-entity alongpath="curve:#track2; loop:true;" id="ground" >
+		<a-cylinder material="color:#000000" radius="60" height="0"></a-cylinder>
+		<a-box color="#ffffff" position="0 0 5" depth="0.5" height="0" width="100"></a-box>
+		<a-box color="#ffffff" position="0 0 -5" depth="0.5" height="0" width="100"></a-box>
+		</a-entity>
+		<a-sky color="powderblue" theta-length="90" radius="40"></a-sky>
+		<!--<a-light type="directional" color="#FFF" intensity="0.5" position="0 0 0"></a-light>-->
 		<a-light type="ambient" color="#FFF"></a-light>
 		<a-curve id="track1">
 			<a-curve-point id="curve1"></a-curve-point>
@@ -38,7 +38,7 @@
 		</a-curve>
 		<script src="./public/js/random.js"></script>
 		<a-entity id="coin" visible="true" position="-100 0 0" alongpath="curve: #track3; loop:true; dur:5000; triggerRadius:8; delay:0; rotate:true;">
-			<a-cylinder id="sikka" color="yellow" height=0.1 radius=1 position="1 1 1" rotation="0 0 90"></a-cylinder>
+			<a-cylinder id="sikka" color="yellow" height=0.1 radius=1.25 position="-3 0 0" ></a-cylinder>
 		</a-entity>
 		<a-entity id="moving-car" alongpath="curve: #track1; loop:true; dur:5000; triggerRadius:8; delay:0;">
 			<a-entity position="-4 3 3" scale="2 2 2">
