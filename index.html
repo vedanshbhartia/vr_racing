@@ -19,7 +19,7 @@
 			<a-curve-point position="16 0 0"></a-curve-point>
 		</a-curve>
 		<a-assets>
-			<img id="groundTexture" src="public/images/road1.jpg">
+			<img id="groundTexture" src="public/images/road.jpg">
 			<img id="skyTexture" src="public/images/sky1.jpg">
 		</a-assets>
 		<a-cylinder alongpath="curve:#track2; loop:true;" id="ground" src="#groundTexture" radius="60" height="0"></a-cylinder>
@@ -38,7 +38,7 @@
 		</a-curve>
 		<script src="./public/js/random.js"></script>
 		<a-entity id="coin" visible="true" position="-100 0 0" alongpath="curve: #track3; loop:true; dur:5000; triggerRadius:8; delay:0; rotate:true;">
-			<a-cylinder id="sikka" color="yellow" height=0.1 radius=1 position="1 1 1" rotation="0 0 90"></a-cylinder>
+			<a-cylinder id="sikka" color="yellow" height=0.1 radius=1.25 position="-3 0 0" ></a-cylinder>
 		</a-entity>
 		<a-entity id="moving-car" alongpath="curve: #track1; loop:true; dur:5000; triggerRadius:8; delay:0;">
 			<a-entity position="-4 3 3" scale="2 2 2">
